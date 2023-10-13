@@ -9,6 +9,7 @@ import {
 } from "@react-three/drei";
 import { useState, useEffect, useRef, ReactNode } from "react";
 import * as THREE from "three";
+import { MethlabModel } from "./MethlabModel";
 
 export default function Page() {
   const [keysPressed, setKeysPressed] = useState<Record<string, boolean>>({});
@@ -36,6 +37,8 @@ export default function Page() {
       <Canvas camera={{ fov: 75 }} shadows>
         {/* <gridHelper /> */}
         <Experience>
+          <Environment files="/artist_workshop_1k.hdr" background />
+          <MethlabModel />
           <Model keysPressed={keysPressed} />
         </Experience>
       </Canvas>
@@ -119,7 +122,6 @@ function Model({ keysPressed }: { keysPressed: Record<string, boolean> }) {
 
   return (
     <group ref={group} dispose={null} name="modelContainer">
-      <Environment files="/artist_workshop_1k.hdr" background />
       <group name="Model">
         <group
           name="Armature"
@@ -261,15 +263,15 @@ function Experience({ children }: { children: ReactNode }) {
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
       />
-      <group position={[5, 0, -6]} onClick={handleDoorClick}>
+      {/* <group position={[5, 0, -6]} onClick={handleDoorClick}>
         <primitive object={door} />
-      </group>
+      </group> */}
       <group position={[0, -1, 0]} ref={modelRef}>
         {children}
       </group>
-      <group position={[-5, 0, -6]} onClick={handleStandClick}>
+      {/* <group position={[-5, 0, -6]} onClick={handleStandClick}>
         <primitive object={stand} />
-      </group>
+      </group> */}
       <mesh
         rotation={[-0.5 * Math.PI, 0, 0]}
         position={[0, -1, 0]}
