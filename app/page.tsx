@@ -76,7 +76,7 @@ function Model({ keysPressed }: { keysPressed: Record<string, boolean> }) {
     cameraTarget.y = group.current.position.y + 2;
     cameraTarget.z = group.current.position.z;
     if (controlsRef.current) {
-      controlsRef.current.target = cameraTarget;
+      (controlsRef.current as any).target = cameraTarget;
     }
   };
 
@@ -128,7 +128,7 @@ function Model({ keysPressed }: { keysPressed: Record<string, boolean> }) {
           rotation={[Math.PI / 2, 0, Math.PI]}
           scale={0.01}
         >
-          <OrbitControls ref={controlsRef} />
+          <OrbitControls ref={controlsRef as any} />
           <primitive object={nodes.mixamorigHips} />
           <group name="SM_Chr_Developer_Female_02">
             <skinnedMesh
