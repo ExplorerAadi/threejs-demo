@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* html,
+body,
+#root
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: LightSkyBlue;
+} */
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
