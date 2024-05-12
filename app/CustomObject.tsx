@@ -1,5 +1,6 @@
+import { Root, Text } from "@react-three/uikit";
 import { useEffect, useRef, useMemo } from "react";
-import { BufferGeometry, DoubleSide, NormalBufferAttributes } from "three";
+import { BufferGeometry, DoubleSide, MeshPhongMaterial, NormalBufferAttributes } from "three";
 
 export const CustomObject = () => {
   const geometryRef = useRef<BufferGeometry<NormalBufferAttributes>>(null);
@@ -35,3 +36,32 @@ export const CustomObject = () => {
     </mesh>
   );
 };
+
+export const Text3D = () => {
+  return (
+      <Root>
+        <Text
+          backgroundColor="black"
+          color="white"
+          padding={24}
+          borderRadius={32}
+          fontSize={32}
+          borderColor="black"
+          borderBend={0.3}
+          borderWidth={8}
+          panelMaterialClass={FancyMaterial}
+        >
+          Some Fancy Text
+        </Text>
+      </Root>
+  )
+}
+
+class FancyMaterial extends MeshPhongMaterial {
+  constructor() {
+    super({
+      specular: 0x111111,
+      shininess: 100,
+    })
+  }
+}
