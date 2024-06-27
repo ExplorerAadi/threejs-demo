@@ -1,5 +1,6 @@
 import {
   CanvasTexture,
+  Texture,
   Color,
   NearestFilter,
   RepeatWrapping,
@@ -27,7 +28,7 @@ export interface ASCIIEffectProps {
   color?: string;
 }
 
-export class ASCIIEffect extends Effect {
+export class ASCIIEffectShader extends Effect {
   constructor({
     characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     fontSize = 128,
@@ -35,7 +36,7 @@ export class ASCIIEffect extends Effect {
     color = "#ffffff",
   }: ASCIIEffectProps = {}) {
     const uniforms = new Map<string, Uniform>([
-      ["uCharacters", new Uniform(new CanvasTexture())],
+      ["uCharacters", new Uniform(new Texture())],
       ["uCellSize", new Uniform(cellSize)],
       ["uColor", new Uniform(new Color(color))],
     ]);
@@ -46,7 +47,12 @@ export class ASCIIEffect extends Effect {
       characters,
       fontSize
     );
-    this.uniforms.get("uCharacters").value = charactersTexture;
+    const charactersTextureUniform = this.uniforms.get("uCharacters");
+    if (charactersTextureUniform) {
+      charactersTextureUniform.value = charactersTexture;
+    } else {
+      console.error("Uniform uCharacters is undefined");
+    }
   }
 
   createCharactersTexture(characters: string, fontSize: number): CanvasTexture {
