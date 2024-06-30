@@ -40,7 +40,7 @@ export const ASCIIEffect = () => {
       <AsciiRenderer characters=" .:,/-=+*#%@" invert={false} />
       {/* <AnimatingObject /> */}
       <mesh ref={textRef}>
-        <Center position={[0, -1, 0]}>
+        <Center position={[0, 0, 0]}>
           <Text3D
             rotation={[0, 0.5, 0]}
             font={font as unknown as FontData}
