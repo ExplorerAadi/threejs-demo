@@ -86,3 +86,7 @@ void main(){
     
     gl_FragColor=vec4(strength,strength,strength,1.);
 }
+
+// There is a stationary canvas that is playing the animation in the background.
+// There is a canvas on top that acts as an alpha mask with just the text and is controlled by scroll. (and keep it 2D)
+// Use ascii renderer on top.
