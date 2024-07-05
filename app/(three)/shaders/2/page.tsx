@@ -2,14 +2,14 @@
 
 import { useMemo, useRef } from "react";
 // @ts-ignore
-import fragmentShader1 from "./fragment1.glsl";
+import fragmentShader2 from "./fragment2.glsl";
 // @ts-ignore
-import vertexShader1 from "./vertex1.glsl";
-import { Color, Mesh, ShaderMaterial } from "three";
+import vertexShader2 from "./vertex2.glsl";
+import { Mesh, ShaderMaterial } from "three";
 import { useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 
-export default function ShadersFirstExamplePage() {
+export default function ShadersSecondExamplePage() {
   const meshRef = useRef<Mesh>(null);
 
   const uniforms = useMemo(
@@ -17,8 +17,9 @@ export default function ShadersFirstExamplePage() {
       u_time: {
         value: 0.0,
       },
-      u_colorA: { value: new Color("#FFE486") },
-      u_colorB: { value: new Color("#FEB3D9") },
+      u_intensity: {
+        value: 0.3,
+      },
     }),
     []
   );
@@ -27,6 +28,8 @@ export default function ShadersFirstExamplePage() {
     if (meshRef.current) {
       (meshRef.current.material as ShaderMaterial).uniforms.u_time.value +=
         delta;
+      (meshRef.current.material as ShaderMaterial).uniforms.u_intensity.value +=
+        0.15;
     }
   });
 
@@ -41,8 +44,8 @@ export default function ShadersFirstExamplePage() {
       >
         <planeGeometry args={[1, 1, 16, 16]} />
         <shaderMaterial
-          fragmentShader={fragmentShader1}
-          vertexShader={vertexShader1}
+          fragmentShader={fragmentShader2}
+          vertexShader={vertexShader2}
           uniforms={uniforms}
           wireframe={false}
         />
