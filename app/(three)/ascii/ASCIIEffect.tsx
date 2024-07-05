@@ -6,18 +6,16 @@ import {
   Center,
   FontData,
   OrbitControls,
-  Scroll,
-  ScrollControls,
   Text3D,
 } from "@react-three/drei";
 
 import font from "./font.json";
 import { useRef } from "react";
-import { Mesh, ShaderMaterial, Shape } from "three";
+import { Mesh, ShaderMaterial } from "three";
 // @ts-ignore
-import fragmentShader from "./shaders/fragment.glsl";
+import fragmentShader from "./ascii-shaders/fragment.glsl";
 // @ts-ignore
-import vertexShader from "./shaders/vertex.glsl";
+import vertexShader from "./ascii-shaders/vertex.glsl";
 
 export const ASCIIEffect = () => {
   const { camera, gl } = useThree();

@@ -1,5 +1,10 @@
-import { Experience } from "./Experience";
+import { Experience } from "./(three)/Experience";
+import { ThreeJSWrapper } from "./(three)/ThreeJSWrapper";
 
 export default function Home() {
-  return <Experience />;
+  return (
+    <ThreeJSWrapper>
+      <Experience />
+    </ThreeJSWrapper>
+  );
 }

@@ -14,10 +14,14 @@ export const ThreeJSWrapper = ({ children }: { children: ReactNode }) => {
           // outputColorSpace: THREE.SRGBColorSpace
         }}
         camera={{
-          fov: 45,
-          near: 0.1,
-          far: 200,
-          position: [3, 2, 6],
+          // for other scenes
+          // fov: 45,
+          // near: 0.1,
+          // far: 200,
+          // position: [3, 2, 6],
+
+          // for shaders
+          position: [1, 1, 1],
         }}
       >
         {children}
