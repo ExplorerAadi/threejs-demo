@@ -18,6 +18,9 @@ const cameraValues = {
   "/shaders/2": {
     position: [0, 0, 8],
   },
+  "/shaders/3": {
+    position: [0.0, 0.0, 1.5],
+  },
 };
 
 export const ThreeJSWrapper = ({ children }: { children: ReactNode }) => {
