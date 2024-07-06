@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Canvas } from "@react-three/fiber";
-import { ACESFilmicToneMapping } from "three";
-import { ThreeJSWrapper } from "./ThreeJSWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ThreeJSWrapper>{children}</ThreeJSWrapper>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
